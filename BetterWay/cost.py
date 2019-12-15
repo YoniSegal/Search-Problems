@@ -1,7 +1,7 @@
 import math
 from math import radians, cos, pi, acos, sin
 
-from ways import info
+from BetterWay import info
 
 
 def getLink(source, target):

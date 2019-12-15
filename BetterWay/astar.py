@@ -1,6 +1,6 @@
 from BetterWay.best_first_graph_search import best_first_graph_search
 from BetterWay.cost import compute_distance, compute_cost
-from ways import graph
+from BetterWay import graph
 
 
 def astar(source, target):

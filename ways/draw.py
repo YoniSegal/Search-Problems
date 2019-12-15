@@ -1,9 +1,6 @@
 'accessible using "import ways.draw"'
 
-
-from . import info
-from . import tools
-from . import graph
+from BetterWay import graph, info
 
 try:
     import matplotlib.pyplot as plt

@@ -5,8 +5,8 @@
 
 from collections import namedtuple
 
-from . import tools
-from . import info
+from ways import tools
+from BetterWay import info
 import sys
 
 # define class Link_traffic_params

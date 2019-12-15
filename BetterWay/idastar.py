@@ -1,7 +1,8 @@
 import math
 
 from BetterWay.cost import compute_cost
-from ways import graph, compute_distance
+from ways import compute_distance
+from BetterWay import graph
 
 
 def expand(graph, junction):

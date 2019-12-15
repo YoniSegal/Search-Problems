@@ -1,8 +1,8 @@
 import csv
 
+from BetterWay import graph
 from BetterWay.best_first_graph_search import best_first_graph_search
 from BetterWay.cost import compute_cost
-from ways import graph
 
 
 def fake(source, target):

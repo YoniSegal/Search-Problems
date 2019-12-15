@@ -1,4 +1,4 @@
-from ways import graph
+from BetterWay import graph
 from random import randrange
 import csv
 import sys
