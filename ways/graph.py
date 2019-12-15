@@ -4,6 +4,7 @@
 '''
 
 from collections import namedtuple
+
 from . import tools
 from . import info
 import sys
@@ -104,7 +105,7 @@ def _make_junction(i_str, lat_str, lon_str, *link_row):
 
 
 @tools.timed
-def load_map_from_csv(filename='israel.csv', start=0, count=sys.maxsize):
+def load_map_from_csv(filename=r'C:\Users\yonis\Desktop\ComputerScience\AI\ex1\MyWay\db\israel.csv', start=0, count=sys.maxsize):
     '''returns graph, encoded as an adjacency list
     @param slice_params can be used to cut part of the file
     example: load_map_from_csv(start=50000, count=50000))

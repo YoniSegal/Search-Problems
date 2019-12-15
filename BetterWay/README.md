@@ -43,7 +43,7 @@ Documentation
 
 [`docs/AI_HW1.pdf`](docs/AI_HW1.pdf) Assignment file
 
-[`docs/dependencies.txt`](docs/dependencies.txt) Declarations of dependencies in 3rd party libraries. For example:
+[`docs/dependencies.txt`](../docs/dependencies.txt) Declarations of dependencies in 3rd party libraries. For example:
 
 > pip numpy
 >

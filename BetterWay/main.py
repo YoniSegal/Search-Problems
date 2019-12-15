@@ -6,35 +6,36 @@ We just parse input and call methods from other modules.
 
 # do NOT import ways. This should be done from other files
 # simply import your modules and call the appropriate functions
-import ucs
-from ways import tools
 
 
-def find_ucs_rout(source, target):
+from BetterWay import ucs, astar, idastar
+
+
+def find_ucs_route(source, target):
     'call function to find path, and return list of indices'
-    return ucs.ucs(source, target, tools.compute_distance)
+    return ucs.ucs(source, target)
 
 
 def find_astar_route(source, target):
     'call function to find path, and return list of indices'
-    raise NotImplementedError
+    return astar.astar(source, target)
 
 
 def find_idastar_route(source, target):
     'call function to find path, and return list of indices'
-    raise NotImplementedError
+    return idastar.idastar(source, target)
 
 
 def dispatch(argv):
     from sys import argv
     source, target = int(argv[2]), int(argv[3])
     if argv[1] == 'ucs':
-        path = find_ucs_rout(source, target)
+        path = find_ucs_route(source, target)
     elif argv[1] == 'astar':
         path = find_astar_route(source, target)
     elif argv[1] == 'idastar':
         path = find_idastar_route(source, target)
-    print(' '.join(str(j) for j in path))
+    print(' '.join(str(j[0]) + " " for j in path))
 
 
 # Receive [algorithm][source][target] as parameters.
