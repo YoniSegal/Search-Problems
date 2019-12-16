@@ -44,6 +44,6 @@ def best_first_graph_search(graph, start, target, compute_cost, compute_distance
             if notIn(i, visited):
                 if len(i[3]) != 0:
                     child_to_parent[i] = junction
-                total_cost = cost + compute_cost(junction, i) + compute_distance(i, target)
+                total_cost = cost + compute_cost(junction, i) + compute_distance(i[1], i[2], target[1], target[2])
                 queue.put((total_cost, i))
     return None

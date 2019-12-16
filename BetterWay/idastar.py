@@ -1,4 +1,7 @@
+import csv
+import datetime
 import math
+import matplotlib.pyplot as plt
 
 from BetterWay.cost import compute_cost
 from ways import compute_distance
@@ -13,18 +16,51 @@ def expand(graph, junction):
 
 
 def getPath(child_to_parent, start, current):
+    total_time = 0
     path = []
     while start != current:
         path.append(current)
+        total_time += compute_cost(child_to_parent[current], current)
         current = child_to_parent[current]
     path.append(current)
     path.reverse()
-    return path
+    return total_time, path
 
 
 def idastar(source, target):
     g = graph.load_map_from_csv()
-    return ida_star(g, g.get(source), g.get(target))
+    f = open(r"C:\Users\yonis\Desktop\ComputerScience\AI\ex1\MyWay\results\IdaStarRuns.txt", "w+")
+    heuristic = []
+    actual = []
+    i = 0
+    times = []
+    with open('problems.csv', newline='') as csvfile:
+        data = list(csv.reader(csvfile, delimiter=',', quotechar="'"))
+    for problem in data:
+        if i == 5:
+            break
+        source = int(problem[0])
+        target = int(problem[1])
+        heuristic.append(compute_distance(g.get(source)[1], g.get(source)[2], g.get(target)[1], g.get(target)[2]))
+        start = datetime.datetime.now().replace(second=0)
+        time, path = ida_star(g, g.get(source), g.get(target))
+        end = datetime.datetime.now().replace(second=0)
+        times.append((end - start).total_seconds())
+        print(' '.join(str(j[0]) + " " for j in path))
+        actual.append(time)
+        f.write(str(time) + "\n")
+        i += 1
+    f.close()
+    average = sum(times) / len(times)
+    print("Average IDA*: " + str(average))
+    plt.title("IdaStar")
+    plt.plot(heuristic, actual, 'o')
+    plt.xlabel("Heuristic time")
+    plt.ylabel("Actual time")
+    plt.savefig(r"C:\Users\yonis\Desktop\ComputerScience\AI\ex1\MyWay\results\IdaStar.png")
+    plt.show()
+    # time, path = ida_star(g, g.get(source), g.get(target))
+    return path
 
 
 def ida_star(graph, source, target):

@@ -20,13 +20,11 @@ def compute_distance(lat1, lon1, lat2, lon2):
 
 
 def cost(source, target):
-    dist = compute_distance(source[1], source[2], target[1], target[2])
-    # dist = dist / 1000 + dist % 1000
     link = getLink(source, target)
     if link is None:
         return math.inf
     speed = info.SPEED_RANGES[link[3]][1]
-    return dist / speed
+    return (link[2] / 1000) / speed
 
 
 def distance(lat1, lon1, lat2, lon2):
